@@ -1,4 +1,9 @@
+//code du server node qui va ecouter des requete http et qui va repondre
+
+//inporter le package htttp de node 
 const http = require('http');
+
+//inportation de l'application
 const app = require('./app');
 
 const normalizePort = val => {
@@ -13,6 +18,7 @@ const normalizePort = val => {
   return false;
 };
 const port = normalizePort(process.env.PORT || '3000');
+// app va tourner sur le port de la const port
 app.set('port', port);
 
 const errorHandler = error => {
@@ -35,6 +41,7 @@ const errorHandler = error => {
   }
 };
 
+//cree une const qui va cree le server du package node se server aura notre application
 const server = http.createServer(app);
 
 server.on('error', errorHandler);
@@ -49,4 +56,5 @@ server.listen(port);
 //----------------------------------------------------------------
 app.set("port",process.env.PORT || 3000);
 const server = http.createServer(app);
+// qui va ecoute les requete du port 3000 
 server.listen(process.env.PORT || 3000);
